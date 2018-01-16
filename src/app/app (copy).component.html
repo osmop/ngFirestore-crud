@@ -1,0 +1,117 @@
+<h3>Users</h3>
+
+<!-- <p>Name:
+    <input type="text" placeholder="Name" name="name" [(ngModel)]="addUser.name">
+</p> -->
+
+<table class="table table-bordered">
+  <thead>
+    <tr style="background-color: rgb(194, 187, 187);">
+      <th>Name</th>
+      <th>Email ID</th>
+      <th>Contact Number</th>
+      <th>Action</th>
+    </tr>
+    <tr>
+      <td>
+        <!-- <p>Name:
+        <input type="text" class="form-control" name="item" placeholder="Name"
+        name="name"
+        [(ngModel)]="addUser.name">
+      </p> -->
+        <input type="text" class="form-control" [(ngModel)]="addUser.name" placeholder="Name">
+      </td>
+      <td>
+        <input type="text" class="form-control" [(ngModel)]="addUser.email_id" placeholder="Email Id">
+      </td>
+      <td>
+        <input type="text" class="form-control" [(ngModel)]="addUser.contact_number" placeholder="Contact Number">
+      </td>
+      <td>
+      <button class="btn btn-success" (click)="insert()">Insert</button>
+      </td>
+    </tr>
+  </thead>
+
+  <tbody *ngFor="let item of user | async">
+    <tr>
+      <td>
+        {{item.name}}
+        <!-- {{item.name | json}} -->
+      </td>
+      <td>
+        {{item.email_id}}
+      </td>
+      <td>
+        {{item.contact_number}}
+      </td>
+      <td>
+        <button class="btn btn-danger" (click)="delete(item)">
+          <span class="glyphicon glyphicon-trash">Delete</span>
+        </button>
+        <button class="btn btn-primary" (click)="edit(item)">
+          <span class="glyphicon glyphicon-pen">Update</span>
+        </button>
+      </td>
+    </tr>
+
+    <tr *ngIf="editState && itemToUpdate.id == item.id">
+      <td colspan=5>
+        <div>
+          <div class="row">
+            <div class="col-md-3">
+              <input type="text" class="form-control" [(ngModel)]="itemToUpdate.name" placeholder="Name">
+            </div>
+            <div class="col-md-3">
+              <input type="text" class="form-control" [(ngModel)]="itemToUpdate.email_id" placeholder="Email">
+            </div>
+            <div class="col-md-3">
+              <input type="text" class="form-control" [(ngModel)]="itemToUpdate.contact_number" placeholder="Contact">
+            </div>
+            <div class="col-md-3">
+              <input type="text" class="form-control" [(ngModel)]="itemToUpdate.image" placeholder="Image">
+            </div>
+            <div class="col-md-3">
+              <input type="text" class="form-control" [(ngModel)]="itemToUpdate.id" placeholder="Id">
+            </div>
+          </div>
+          <p></p>
+          <div class="row">
+            <div class="col-md-4" style="text-align:left;">
+              <button class="btn btn-primary" (click)="update()">Update</button>
+              <button class="btn btn-default" (click)="clearState()">Close</button>
+            </div>
+          </div>
+        </div>
+      </td>
+    </tr>
+
+  </tbody>
+
+</table>
+
+
+<!-- Next test -->
+
+<!-- <h3>Notes</h3>
+
+<div *ngFor="note of notes | async">
+  <h3>{{ note | json }}</h3>
+</div> -->
+
+
+
+
+<!-- <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDIvNPR-vyRixAeb7izxQ9Wi8ukQBC9WWo",
+    authDomain: "osmofirestore.firebaseapp.com",
+    databaseURL: "https://osmofirestore.firebaseio.com",
+    projectId: "osmofirestore",
+    storageBucket: "osmofirestore.appspot.com",
+    messagingSenderId: "38598776836"
+  };
+  firebase.initializeApp(config);
+</script> -->
